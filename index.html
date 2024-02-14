@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncHUb Fashion Learn</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .background-image {
+            position: relative;
+            background-image: url('assets/main.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            opacity: 0.9; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        .navbar {
+            position: absolute;
+            top: 0;
+            left: 50%; /* Center the navbar horizontally */
+            transform: translateX(-50%);
+            color: black; /* Change font color to black */
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            justify-content: center; /* Center the navigation links horizontally */
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-right: 50px;
+        }
+
+        .nav-links li:last-child {
+            margin-right: 0;
+        }
+
+        .nav-links li a {
+            color:white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color:rgb(221, 145, 145);
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .get-started-button {
+            padding: 10px 21px;
+            border: none;
+            background-color: rgb(255, 1, 86);
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            position: absolute;
+            right: -450px;
+            bottom: 8px;
+        }
+
+        .get-started-button:hover {
+            background-color: #e175cd;
+        }
+
+        .email-input {
+            width: 460px;
+            padding: 19px 40px 19px 45px;
+            font-size: 14px;
+            border-radius: 21px;
+            box-sizing: border-box;
+            margin-right: 2px;
+        }
+
+        .email-icon {
+            position: absolute;
+            left: 13px;
+            top: 25px;
+            transform: translateY(-50%);
+            color: rgba(0, 0, 0, 0.143);
+            font-size: 30px;
+        }
+
+        .text-container {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: left;
+            padding: 20px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: white;
+        }
+
+        .text-container h2,
+        .text-container p {
+            margin: 3px; /* Remove default margin */
+        }
+
+        .input-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .email-input {
+            width: 460px;
+            padding: 19px 40px 19px 45px;
+            font-size: 14px;
+            border-radius: 21px;
+            box-sizing: border-box;
+            margin-right: 2px;
+        }
+
+        .sign-up-button {
+            padding: 10px 21px;
+            border: none;
+            background-color: rgb(255, 1, 86);
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            margin-left: -124px;
+        }
+
+        .sign-up-button:hover {
+            background-color: #0056b3;
+        }
+
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            height: 100vh;
+            position: relative;
+        }
+        .title {
+    position: absolute;
+    top: 0%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    font-size: 36px;
+    font-weight: bold;
+    color: black;
+    z-index: 2;
+    margin-left: -15%;
+} /* Adjusted margin to center the title */
+
+
+
+        .card {
+            width: calc(50% - 20px); /* Set the width to half minus margins */
+            height: 250px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            z-index: 2; /* Ensure the hovered card is in front */
+        }
+
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .know-more-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .know-more-button:hover {
+            background-color: #0056b3;
+        }
+
+       
+        .left-cards {
+    width: calc(50% - 60px); /* Decrease the width to move the cards inside */
+    margin-right: 20px; /* Adjust the right margin to create space between the cards */
+}
+
+.right-cards {
+    width: calc(50% - 40px); /* Increase the width to take the right side of the page */
+    margin-left: 20px; /* Adjust the left margin to create space between the cards */
+}
+
+    </style>
+</head>
+<body>
+    <!--navbar-->
+    <div class="background-image">
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="#" onclick="scrollToSection('home-content')">Home</a></li>
+                <li><a href="#">Our Story</a></li>
+                <li><a href="#">Learn</a></li>
+                <li><a href="#">Shop</a></li>
+                <li class="dropdown">
+                    <a href="#">Explore</a>
+                    <div class="dropdown-content">
+                        <a href="#">Donation</a>
+                        <a href="#">Thrift</a>
+                        <a href="#">Renting</a>
+                    </div>
+                </li>
+                <li><a href="home.html" class="get-started-button">Get Started</a></li> <!-- Added Get Started button -->
+            </ul>
+        </nav>
+        
+        <!-- paragraph and input container -->
+        <div class="text-container">
+            <h2 style="font-size: 250%;">Enter the captivating world of SyncHub</h2>
+            <p>Where fashion flourishes and creativity knows no limits</p>
+            <div class="input-container">
+                <!-- Email Container-->
+                <span class="email-icon">&#9993;</span> 
+                <input type="email" class="email-input" placeholder="Enter Email address">
+                <a href="#" class="sign-up-button">Sign Up</a>
+            </div>
+        </div>
+    </div>
+    <!-- Home Scroll-->
+    
+    <section id="home-content" class="cards-container">
+        <!-- Title -->
+        <h2 class="title">SyncHub Fashion</h2>
+    
+        <!-- Left Cards -->
+        <div class="left-cards">
+            <!-- Card 1: About -->
+            <div class="card">
+                <h3>About</h3>
+                <p>Learn about SyncHub Fashion</p>
+                <a href="#" class="know-more-button">Know more</a>
+            </div>
+            <!-- Card 2: Features -->
+            <div class="card">
+                <h3>Features</h3>
+                <p>Discover the features of SyncHub Fashion</p>
+                <a href="#" class="know-more-button">Know more</a>
+            </div>
+        </div>
+        
+        <!-- Right Cards -->
+        <div class="right-cards">
+            <!-- Card 3: Testimonials -->
+            <div class="card">
+                <h3>Testimonials</h3>
+                <p>Read what others say about SyncHub Fashion</p>
+                <a href="#" class="know-more-button">Know more</a>
+            </div>
+            <!-- Card 4: Contact -->
+            <div class="card">
+                <h3>Contact</h3>
+                <p>Get in touch with SyncHub Fashion</p>
+                <a href="#" class="know-more-button">Know more</a>
+            </div>
+        </div>
+    </section>
+<script>
+    function scrollToSection(sectionId) {
+        var section = document.getElementById(sectionId);
+        section.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+    
+</body>
+</html>
